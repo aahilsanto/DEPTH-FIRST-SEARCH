@@ -1,7 +1,7 @@
 # BREADTH-FIRST-SEARCH
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name:  </h3>
-<h3>Register Number: </h3>
+<h3>Name: A Ahil Santo </h3>
+<h3>Register Number: 212224040018 </h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -68,6 +68,48 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 
 </ol>
 
+<h3>Program:</h3>
+
+```
+from collections import defaultdict, deque
+
+def bfs(graph, start):
+    visited = defaultdict(bool)
+    path = []
+    queue = deque()
+
+    queue.append(start)
+    visited[start] = True
+
+    while queue:
+        node = queue.popleft()
+        path.append(node)
+
+        for nei in graph[node]:
+            if not visited[nei]:
+                visited[nei] = True
+                queue.append(nei)
+
+    return path
+
+graph = defaultdict(list)
+n, e = map(int, input().split())
+n, s = 0, ""
+
+for i in range(e):
+    u, v = map(str, input().split())
+    if n == 0:
+        s = str(u)   # take first node as start
+    graph[u].append(v)
+    graph[v].append(u)
+    n += 1
+
+start = s
+traversedpath = bfs(graph, start)
+print(traversedpath)
+
+```
+
 <hr>
 <h3>Sample Input</h3>
 <hr>
@@ -84,7 +126,8 @@ G F <BR>
 <hr>
 <h3>Sample Output</h3>
 <hr>
-['A', 'B', 'C', 'F', 'E', 'D', 'G']
+
+<img width="791" height="267" alt="1" src="https://github.com/user-attachments/assets/cb2cf093-71c2-4963-af9a-73c59fb3a727" />
 
 <hr>
 
@@ -101,7 +144,9 @@ G F <BR>
 <hr>
 <h3>Sample Output</h3>
 <hr>
-['0', '1', '2', '3', '4']
+
+<img width="542" height="195" alt="2" src="https://github.com/user-attachments/assets/09f7d321-6e95-414d-ad91-71129d1d5e47" />
+
 <hr>
 <h3>Result:</h3>
 <hr>
